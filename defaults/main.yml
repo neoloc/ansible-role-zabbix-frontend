@@ -1,0 +1,14 @@
+---
+# defaults file for role
+# How to connect to the mysql database, either `socket` or `network`.
+zabbix_frontend_mysql_connection: socket
+
+# Details to connect to the database.
+zabbix_frontend_database_name: zabbix
+zabbix_frontend_database_user: zabbix
+zabbix_frontend_database_pass: zabbix
+zabbix_frontend_database_host: localhost
+zabbix_frontend_database_port: 3306
+
+# Details to connect to Zabbix.
+zabbix_frontend_server_name: zabbix

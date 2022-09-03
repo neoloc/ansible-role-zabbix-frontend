@@ -1,0 +1,33 @@
+---
+# vars file for role
+
+_zabbix_frontend_packages:
+  Debian:
+    - zabbix-frontend-php
+    - zabbix-nginx-conf
+  RedHat:
+    - zabbix-web-mysql
+    - zabbix-nginx-conf
+  Suse:
+    - zabbix-web-mysql
+    - zabbix-nginx-conf
+
+zabbix_frontend_packages: "{{ _zabbix_frontend_packages[ansible_os_family ~ '-' ~ ansible_distribution_major_version] | default(_zabbix_frontend_packages[ansible_os_family] ) }}"
+
+_zabbix_configuration_path:
+  default: /etc/zabbix/web
+  Ubuntu-16: /usr/share/zabbix/conf
+
+zabbix_configuration_path: "{{ _zabbix_configuration_path[ansible_distribution ~ '-' ~ ansible_distribution_major_version] | default(_zabbix_configuration_path['default'] ) }}"
+
+_zabbix_frontend_httpd_service:
+  default: nginx
+
+zabbix_frontend_httpd_service: "{{ _zabbix_frontend_httpd_service[ansible_os_family] | default(_zabbix_frontend_httpd_service['default'] ) }}"
+
+_zabbix_frontend_mysql_socket:
+  default: /var/run/mysql/mysql.sock
+  Debian: /run/mysql/mysqld.sock
+  RedHat: /var/lib/mysql/mysql.sock
+
+zabbix_frontend_mysql_socket: "{{ _zabbix_frontend_mysql_socket[ansible_os_family] | default(_zabbix_frontend_mysql_socket['default'] ) }}"
