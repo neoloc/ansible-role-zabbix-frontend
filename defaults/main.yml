@@ -1,5 +1,8 @@
 ---
 # defaults file for role
+# enable zabbix zabbix_frontend
+zabbix_frontend_configure: false
+
 # How to connect to the mysql database, either `socket` or `network`.
 zabbix_frontend_mysql_connection: socket
 

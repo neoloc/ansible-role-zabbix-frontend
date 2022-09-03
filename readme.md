@@ -15,6 +15,7 @@ Role Variables
 --------------
 
 ```yaml
+zabbix_frontend_configure: true
 zabbix_frontend_mysql_connection: socket
 zabbix_frontend_database_name: zabbix
 zabbix_frontend_database_user: zabbix
